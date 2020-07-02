@@ -5,7 +5,15 @@
     "module": "commonjs",
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "@shared": [
+        "app/shared/index"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+    }
   },
   "files": [
     "src/main.server.ts",
