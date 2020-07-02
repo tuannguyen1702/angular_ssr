@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from './shared/shared.module';
+// #region JSON Schema form (using @delon/form)
+import { JsonSchemaModule } from './shared/json-schema/json-schema.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
@@ -16,6 +20,9 @@ import en from '@angular/common/locales/en';
 
 registerLocaleData(en);
 
+
+const FORM_MODULES = [JsonSchemaModule];
+
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +35,9 @@ registerLocaleData(en);
     NzMenuModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule.forRoot(),
+    ...FORM_MODULES
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
